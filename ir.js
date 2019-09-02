@@ -33,15 +33,18 @@ $(document).ready(function () {
         'ایلام',
     ];
 
+    if (typeof iprSetting !== 'undefined') {
+        iprSetting.placeholder ? $('.irp_province').append(`<option value="select_province" selected disabled>انتخاب استان</option>`) : '';
+        iprSetting.placeholder ? $('.irp_city').append(`<option value="select_city" selected disabled>انتخاب شهر</option>`) : '';
+
+        iprSetting.sort ? provinces.sort() : '';
+    }
+
     provinces.forEach(val => {
         $('.irp_province').append(`<option value="${val}">${val}</option>`);
     });
 
-    provinces.forEach(val => {
-        console.log(val)
-    });
-
-    $(document).on('change', '.irp_province', function () {
+    $(document).on('change', '.irp_province', function() {
 
         if ($(this).val() === 'آذربایجان شرقی') {
             $('.irp_city').empty().html(`
@@ -62,7 +65,8 @@ $(document).ready(function () {
             <option value="خسروشاه">خسروشاه</option>
             <option value="بستان‌آباد">بستان‌آباد</option>
             <option value="هشترود">هشترود</option>         
-            `)
+            `).sort();
+
         } else if ($(this).val() === 'آذربایجان غربی') {
             $('.irp_city').empty().html(`
             <option value="ارومیه">ارومیه</option>
@@ -476,8 +480,5 @@ $(document).ready(function () {
             <option value="ابرکوه">ابرکوه</option>   
             `)
         }
-
-
     });
-
 });
