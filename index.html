@@ -17,10 +17,13 @@
     <script src="jquery-3.4.1.min.js"></script>
     <script src="ir.js"></script>
     <script>
-        var iprSetting = {
-            sort: true,
-            placeholder: true
-        }
+        $(document).ready(function(){
+            $('body').iranPlaces({
+                provinceTarget: '.irp_province',
+                cityTarget: '.irp_city',
+                defaultProvince: 'آذربایجان شرقی'
+            });
+        });
     </script>
 
 </body>
